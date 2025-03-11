@@ -1,0 +1,25 @@
+{
+    "title": "Game deals actor",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "maxRequestsPerCrawl": {
+            "title": "Max Requests per Crawl",
+            "type": "integer",
+            "description": "Maximum number of requests that can be made by this crawler. This will influence how many games deals will be scraped",
+            "default": 10
+        },
+		"maxRequestsRetries": {
+			"title": "Max request retries",
+			"type": "integer",
+			"description":"Maximum number of retries per failed request.",
+			"default": 10
+		},
+        "proxyConfigurationOptions": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Proxy configuration - See the 'Input' on 'Source' tab or ProxyConfigurationOptions object in the docs",
+            "editor": "proxy"
+        }
+    }
+}

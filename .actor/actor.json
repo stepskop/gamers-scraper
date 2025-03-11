@@ -1,0 +1,71 @@
+{
+	"actorSpecification": 1,
+	"name": "game-deals",
+	"title": "Gamer's game deals scraper",
+	"description": "Actor searching for 100% discounted games on popular online game stores",
+	"version": "1.0",
+	"meta": {
+		"templateId": "ts-crawlee-playwright-chrome"
+	},
+	"input": "./input_schema.json",
+	"dockerfile": "./Dockerfile",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "views": {
+                "overview": {
+                    "title": "Overview",
+                    "transformation": {
+                        "fields": [
+                            "name",
+                            "url",
+                            "originalPrice",
+                            "endDate",
+                            "thumbnail",
+                            "publisher",
+                            "developer",
+                            "platform"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "name": {
+                                "label": "Name",
+                                "format": "text"
+                            },
+                            "url": {
+                                "label": "Link",
+                                "format": "link"
+                            },
+                            "originalPrice": {
+                                "label": "Original price",
+                                "format": "text"
+                            },
+                            "endDate": {
+                                "label": "End date",
+                                "format": "text"
+                            },
+                            "thumbnail": {
+                                "label": "Thumbnail",
+                                "format": "image"
+                            },
+                            "publisher": {
+                                "label": "Publisher",
+                                "format": "text"
+                            },
+                            "developer": {
+                                "label": "Developer",
+                                "format": "text"
+                            },
+                            "platform": {
+                                "label": "Platform",
+                                "format": "text"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
