@@ -30,4 +30,4 @@ Using this you won't miss any "juicy" offer like **Death Stranding** on 22 May 2
 }
 ```
 ## Errors
-If there is error during scraping then current page screenshot is made and saved to [Key-Value store](https://docs.apify.com/platform/storage/key-value-store) with key formatted as `ERROR_[platform]_[random string]`, for example `ERROR_EPICGAMES_rk3j2sr`
+If there is error during scraping then current page screenshot should be made and saved to [Key-Value store](https://docs.apify.com/platform/storage/key-value-store)
