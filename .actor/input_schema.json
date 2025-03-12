@@ -9,12 +9,12 @@
             "description": "Maximum number of requests that can be made by this crawler. This will influence how many games deals will be scraped",
             "default": 10
         },
-		"maxRequestsRetries": {
-			"title": "Max request retries",
-			"type": "integer",
-			"description":"Maximum number of retries per failed request.",
-			"default": 10
-		},
+        "maxRequestsRetries": {
+            "title": "Max request retries",
+            "type": "integer",
+            "description":"Maximum number of retries per failed request.",
+            "default": 10
+        },
         "proxyConfigurationOptions": {
             "title": "Proxy configuration",
             "type": "object",

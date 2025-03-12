@@ -1,14 +1,14 @@
 {
-	"actorSpecification": 1,
-	"name": "game-deals",
-	"title": "Gamer's game deals scraper",
-	"description": "Actor searching for 100% discounted games on popular online game stores",
-	"version": "1.0",
-	"meta": {
-		"templateId": "ts-crawlee-playwright-chrome"
-	},
-	"input": "./input_schema.json",
-	"dockerfile": "./Dockerfile",
+    "actorSpecification": 1,
+    "name": "game-deals",
+    "title": "Gamer's game deals scraper",
+    "description": "Actor searching for 100% discounted games on popular online game stores",
+    "version": "1.1",
+    "meta": {
+        "templateId": "ts-crawlee-playwright-chrome"
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile",
     "storages": {
         "dataset": {
             "actorSpecification": 1,
