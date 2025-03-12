@@ -1,6 +1,6 @@
 {
-	"name": "game-deals",
-	"version": "1.0.0",
+	"name": "game-deals-scraper",
+	"version": "1.0.1",
 	"type": "module",
 	"description": "Apify actor that scrapes current game deals (100% discounted games) across the online game platforms.",
 	"engines": {
