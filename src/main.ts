@@ -18,10 +18,6 @@ const {
     proxyConfigurationOptions,
 } = await Actor.getInput<Input>() ?? {} as Input;
 
-// const proxyConfiguration = await Actor.createProxyConfiguration({
-//     groups: ['RESIDENTIAL'],
-//     countryCode: 'US',
-// });
 const proxyConfiguration = await Actor.createProxyConfiguration(proxyConfigurationOptions);
 const crawler = new PlaywrightCrawler({
     proxyConfiguration,
@@ -58,6 +54,9 @@ const crawler = new PlaywrightCrawler({
                 operatingSystems: [OperatingSystemsName.windows, OperatingSystemsName.linux],
             },
         },
+    },
+    statisticsOptions: {
+        saveErrorSnapshots: true,
     },
 });
 

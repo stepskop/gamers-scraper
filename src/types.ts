@@ -1,3 +1,8 @@
+export enum RouteLabel {
+    EPIC_GAMES = 'epic_games',
+    STEAM = 'steam'
+}
+
 export enum Platform {
     EPIC = 'epicgames',
     STEAM = 'steam'
