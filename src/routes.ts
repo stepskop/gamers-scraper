@@ -16,7 +16,7 @@ const normalizeDate = (rawDate: string | null, platform: Platform): Date | undef
             // If date starts with in - offer ends today
             if (rawDate.startsWith('in')) return dateNow;
 
-            const [dayNum, monthName, ...rest ] = rawDate.split(' ');
+            const [dayNum, monthName] = rawDate.split(' ');
             const scheduledOn = new Date(`${dayNum} ${monthName} ${dateNow.getFullYear()}`);
             return scheduledOn;
         }
@@ -49,7 +49,7 @@ router.addHandler(RouteLabel.EPIC_GAMES, async ({ page, log, request }) => {
     await page.waitForLoadState('domcontentloaded');
 
     // Detect if there is age verification and solve it
-    const ageCheck = await page.locator('span', { hasText: 'may contain content not suitable for all ages.' }).isVisible();
+    const ageCheck = await page.locator('span', { hasText: 'To continue, please provide your date of birth' }).isVisible();
     if (ageCheck) {
         await page.locator('#month_toggle').click();
         await page.locator('#month_menu > li').nth(1).click();
