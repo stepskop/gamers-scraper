@@ -16,7 +16,7 @@ const normalizeDate = (rawDate: string | null, platform: Platform): Date | undef
             // If date starts with in - offer ends today
             if (rawDate.startsWith('in')) return dateNow;
 
-            const [dayNum, monthName] = rawDate.split(' ');
+            const [dayNum, monthName, ...rest ] = rawDate.split(' ');
             const scheduledOn = new Date(`${dayNum} ${monthName} ${dateNow.getFullYear()}`);
             return scheduledOn;
         }
@@ -98,9 +98,9 @@ router.addHandler(RouteLabel.STEAM, async ({ page, log, request }) => {
         name: await page.locator('#appHubAppName').textContent(),
         url: request.loadedUrl,
         endDate: normalizeDate((await page
-            .locator('p.game_purchase_discount_countdown')
+            .locator('p.game_purchase_discount_quantity')
             .first()
-            .textContent())?.split('ends ')[1] ?? null, Platform.STEAM), // See more in "normalizeDate()" comment
+            .textContent())?.split('before ')[1] ?? null, Platform.STEAM), // See more in "normalizeDate()" comment
         originalPrice: await page.locator('div.discount_original_price').first().textContent(),
         publisher: await page.locator('#game_highlights div.dev_row', { hasText: 'Publisher' }).getByRole('link').first().textContent(),
         developer: await page.locator('#game_highlights div.dev_row', { hasText: 'Developer' }).locator('#developers_list').getByRole('link').first()
