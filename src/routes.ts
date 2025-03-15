@@ -1,4 +1,5 @@
 import { createPlaywrightRouter, Dataset } from 'crawlee';
+import { Locator } from 'playwright';
 import { Platform, GameDeal, RouteLabel } from './types.js';
 
 /* Transform scraped date of end to normalized Date
@@ -65,6 +66,11 @@ router.addHandler(RouteLabel.EPIC_GAMES, async ({ page, log, request }) => {
 
     const asideSection = page.locator('aside'); // element wrapping all game details on Epic Games
 
+    // Get image, with fallback to game icon
+    let imgUrl: Locator;
+    const carouselImageLocator = page.locator('ul[data-testid="carousel-slider"] > li img');
+    if (await carouselImageLocator.isVisible()) imgUrl = carouselImageLocator.first();
+    else imgUrl = asideSection.locator('img').first();
     // Scrape all targeted fields - very specific per platform and its current version
     const data: GameDeal = {
         name: await page.locator('h1').innerText(),
@@ -76,7 +82,7 @@ router.addHandler(RouteLabel.EPIC_GAMES, async ({ page, log, request }) => {
             .locator('div > div:has-text("Free") > div', { hasNotText: 'Free' }).textContent(),
         publisher: await asideSection.locator('span:has-text("Publisher")').locator('xpath=..').locator('div').textContent(),
         developer: await asideSection.locator('span:has-text("Developer")').locator('xpath=..').locator('div').textContent(),
-        thumbnail: await page.locator('ul[data-testid="carousel-slider"] > li img').first().getAttribute('src'),
+        thumbnail: await imgUrl.getAttribute('src'),
         platform: Platform.EPIC,
     };
     log.info(`Found ongoing game deal on [${data.platform.toUpperCase()}]: ${JSON.stringify(data)}`);
