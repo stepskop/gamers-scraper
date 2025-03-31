@@ -80,7 +80,7 @@ router.addHandler(RouteLabel.EPIC_GAMES, async ({ page, log, request }) => {
         originalPrice: await asideSection
             .locator('span:has-text("-100%")').locator('xpath=../../../..')
             .locator('div > div:has-text("Free") > div', { hasNotText: 'Free' }).textContent(),
-        publisher: await asideSection.locator('span:has-text("Publisher")').locator('xpath=..').locator('div').textContent(),
+        publisher: await asideSection.locator('span:has-text("Publisher")').locator('xpath=..').locator('div > div').textContent(),
         developer: await asideSection.locator('span:has-text("Developer")').locator('xpath=..').locator('div').textContent(),
         thumbnail: await imgUrl.getAttribute('src'),
         platform: Platform.EPIC,
