@@ -36,7 +36,7 @@ router.addDefaultHandler(async ({ enqueueLinks }) => {
     // Handle links based on their site-specific selectors
     await enqueueLinks({
         globs: ['https://store.epicgames.com/**'],
-        selector: 'div[data-component="VaultOfferCard"] > a[aria-label]:has-text("Free now")',
+        selector: 'div[data-component="VaultOfferCard"] > a',
         label: RouteLabel.EPIC_GAMES,
     });
     await enqueueLinks({
